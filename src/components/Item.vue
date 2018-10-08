@@ -10,7 +10,7 @@
        <div class="button-container">
            <div id="ItemSizePicker">
                <p>Pick a size</p>
-               <select>
+               <select v-model="size">
                    <option v-for="size in this.item.sizes" :key="size">{{size}}</option>
                </select>
            </div>
@@ -30,10 +30,23 @@
     export default {
         name: 'item',
         props: ['item'],
+        data() {
+            return {
+                size: ''
+            }
+        },
         methods: {
             addToCart(item) {
-                this.$store.commit('addToCart', item)
-            },
+                if(this.size !== '') {
+                    this.$store.commit({
+                        type: 'addToCart',
+                        id: item.id,
+                        shoe: item.name,
+                        size: this.size,
+                        price: item.price
+                    })
+                }
+            }
         }
     }
 </script>

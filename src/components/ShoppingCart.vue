@@ -2,7 +2,7 @@
     <div id="ShoppingCart">
         <p>Your Cart</p>
         <p>No. of items: {{cart.length}}</p>
-        <p>Total: {{total}}</p>
+        <p>Total: ${{total}}</p>
     </div>
 </template>
 
